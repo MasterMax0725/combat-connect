@@ -9,8 +9,8 @@ class CombatConnectApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Combat Connect',
       debugShowCheckedModeBanner: false,
+      title: 'Combat Connect',
       theme: AppTheme.light,
       routerConfig: appRouter,
     );
