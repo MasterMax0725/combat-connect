@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../core/theme/app_theme.dart';
 import 'router.dart';
+import 'theme.dart';
 
 class CombatConnectApp extends StatelessWidget {
   const CombatConnectApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Combat Connect',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: AppRouter.dashboard,
+      routerConfig: appRouter,
     );
   }
 }
