@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "230198600999",
+    "project_id": "combat-connect-8c816",
+    "storage_bucket": "combat-connect-8c816.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230198600999:android:0a0e545fbb0f167d18f502",
+        "android_client_info": {
+          "package_name": "com.combatconnect.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiNAi4rbk8azL7x4XcwLi2ZIJgKCgt30Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230198600999:android:6cccb182ab5699bc18f502",
+        "android_client_info": {
+          "package_name": "com.combatconnect.combat_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiNAi4rbk8azL7x4XcwLi2ZIJgKCgt30Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
