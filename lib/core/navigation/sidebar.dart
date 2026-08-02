@@ -17,7 +17,7 @@ class Sidebar extends StatelessWidget {
     NavigationItem(
       title: 'Dashboard',
       icon: Icons.dashboard_outlined,
-      route: '/dashboard',
+      route: '/',
     ),
     NavigationItem(
       title: 'Students',
@@ -64,11 +64,18 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 260,
-      color: Colors.white,
+      width: 280,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          right: BorderSide(
+            color: Colors.grey.shade200,
+          ),
+        ),
+      ),
       child: Column(
         children: [
-          const SizedBox(height: 32),
+          const SizedBox(height: 28),
 
           const Icon(
             Icons.sports_martial_arts,
@@ -81,39 +88,65 @@ class Sidebar extends StatelessWidget {
           const Text(
             'Combat Connect',
             style: TextStyle(
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
 
-          const SizedBox(height: 32),
+          const SizedBox(height: 4),
 
-          Expanded(
-            child: ListView(
-              children: items.map((item) {
-                final selected = item.route == selectedRoute;
-
-                return ListTile(
-                  leading: Icon(
-                    item.icon,
-                    color: selected
-                        ? CCColors.primary
-                        : Colors.grey,
-                  ),
-                  title: Text(item.title),
-                  selected: selected,
-                  selectedTileColor:
-                      CCColors.primary.withValues(alpha: .08),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  onTap: () => onNavigate(item.route),
-                );
-              }).toList(),
+          Text(
+            'Train • Manage • Grow',
+            style: TextStyle(
+              color: Colors.grey.shade600,
+              fontSize: 13,
             ),
           ),
 
-          const Divider(),
+          const SizedBox(height: 28),
+
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                final selected = item.route == selectedRoute;
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    leading: Icon(
+                      item.icon,
+                      color: selected
+                          ? Colors.white
+                          : Colors.grey.shade700,
+                    ),
+                    title: Text(
+                      item.title,
+                      style: TextStyle(
+                        fontWeight: selected
+                            ? FontWeight.bold
+                            : FontWeight.w500,
+                        color: selected
+                            ? Colors.white
+                            : Colors.black87,
+                      ),
+                    ),
+                    tileColor: selected
+                        ? CCColors.primary
+                        : Colors.transparent,
+                    onTap: () => onNavigate(item.route),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          const Divider(height: 1),
 
           const ListTile(
             leading: CircleAvatar(

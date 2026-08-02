@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'sidebar.dart';
 import 'top_bar.dart';
@@ -24,10 +25,17 @@ class AppShell extends StatelessWidget {
           Sidebar(
             selectedRoute: selectedRoute,
             onNavigate: (route) {
-              // Router integration comes next sprint.
+              if (route != selectedRoute) {
+                context.go(route);
+              }
             },
           ),
-          Expanded(child: child),
+          Expanded(
+            child: Container(
+              color: const Color(0xFFF8FAFC),
+              child: child,
+            ),
+          ),
         ],
       ),
     );
