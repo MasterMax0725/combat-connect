@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/authentication/presentation/pages/splash_page.dart';
+import '../features/dashboard/presentation/pages/dashboard_page.dart';
 
-final GoRouter appRouter = GoRouter(
+final appRouter = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const SplashPage();
-      },
+      builder: (context, state) => const DashboardPage(),
     ),
   ],
 );
