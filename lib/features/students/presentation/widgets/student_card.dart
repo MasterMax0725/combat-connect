@@ -31,7 +31,7 @@ class StudentCard extends StatelessWidget {
           child: Row(
             children: [
               CircleAvatar(
-                radius: 28,
+                radius: 30,
                 backgroundColor: Colors.red.shade50,
                 child: Icon(
                   student.rankIcon,
@@ -43,13 +43,14 @@ class StudentCard extends StatelessWidget {
 
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
                   children: [
                     Text(
                       student.fullName,
                       style: const TextStyle(
-                        fontWeight: FontWeight.bold,
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
 
@@ -58,7 +59,7 @@ class StudentCard extends StatelessWidget {
                     Text(
                       student.rank,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
 
@@ -74,14 +75,23 @@ class StudentCard extends StatelessWidget {
                 ),
               ),
 
-              CCStatusChip(
-                label: student.status,
-                color: student.statusColor,
+              Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.end,
+                children: [
+                  CCStatusChip(
+                    label: student.status,
+                    color: student.statusColor,
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  const Icon(
+                    Icons.chevron_right,
+                    color: Colors.grey,
+                  ),
+                ],
               ),
-
-              const SizedBox(width: 12),
-
-              const Icon(Icons.chevron_right),
             ],
           ),
         ),
