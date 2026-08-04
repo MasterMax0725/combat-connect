@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:combat_connect/core/ui/buttons/cc_button.dart';
+import 'package:combat_connect/core/ui/forms/cc_password_field.dart';
+import 'package:combat_connect/core/ui/forms/cc_text_field.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -16,7 +18,6 @@ class _LoginFormState extends State<LoginForm> {
   final _passwordController = TextEditingController();
 
   bool _rememberMe = true;
-  bool _obscurePassword = true;
   bool _loading = false;
 
   @override
@@ -35,16 +36,18 @@ class _LoginFormState extends State<LoginForm> {
       _loading = true;
     });
 
-    await Future.delayed(const Duration(seconds: 1));
+    // TODO:
+    // Firebase Authentication
+
+    await Future.delayed(
+      const Duration(seconds: 1),
+    );
 
     if (!mounted) return;
 
     setState(() {
       _loading = false;
     });
-
-    // TODO:
-    // Firebase Authentication
   }
 
   @override
@@ -72,13 +75,13 @@ class _LoginFormState extends State<LoginForm> {
 
           const SizedBox(height: 40),
 
-          TextFormField(
+          CCTextField(
+            label: 'Email',
             controller: _emailController,
+            hintText: 'coach@academy.com',
+            prefixIcon: Icons.email_outlined,
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-              labelText: 'Email',
-              prefixIcon: Icon(Icons.email_outlined),
-            ),
+            textInputAction: TextInputAction.next,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return 'Email is required.';
@@ -88,27 +91,13 @@ class _LoginFormState extends State<LoginForm> {
             },
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 24),
 
-          TextFormField(
+          CCPasswordField(
+            label: 'Password',
             controller: _passwordController,
-            obscureText: _obscurePassword,
-            decoration: InputDecoration(
-              labelText: 'Password',
-              prefixIcon: const Icon(Icons.lock_outline),
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _obscurePassword = !_obscurePassword;
-                  });
-                },
-                icon: Icon(
-                  _obscurePassword
-                      ? Icons.visibility_off
-                      : Icons.visibility,
-                ),
-              ),
-            ),
+            hintText: 'Enter your password',
+            textInputAction: TextInputAction.done,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Password is required.';
@@ -116,6 +105,7 @@ class _LoginFormState extends State<LoginForm> {
 
               return null;
             },
+            onFieldSubmitted: (_) => _login(),
           ),
 
           const SizedBox(height: 20),
@@ -131,13 +121,23 @@ class _LoginFormState extends State<LoginForm> {
                 },
               ),
 
-              const Text('Remember Me'),
+              const Text(
+                'Remember Me',
+                style: TextStyle(
+                  color: Colors.white70,
+                ),
+              ),
 
               const Spacer(),
 
               TextButton(
-                onPressed: () {},
-                child: const Text('Forgot Password?'),
+                onPressed: () {
+                  // TODO:
+                  // Forgot password
+                },
+                child: const Text(
+                  'Forgot Password?',
+                ),
               ),
             ],
           ),
@@ -157,7 +157,10 @@ class _LoginFormState extends State<LoginForm> {
 
           Center(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                // TODO:
+                // Create Academy
+              },
               child: const Text(
                 'Create a new academy',
               ),
