@@ -36,12 +36,9 @@ class _LoginFormState extends State<LoginForm> {
       _loading = true;
     });
 
-    // TODO:
-    // Firebase Authentication
+    // TODO: Firebase Authentication
 
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
+    await Future.delayed(const Duration(seconds: 1));
 
     if (!mounted) return;
 
@@ -59,24 +56,32 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Welcome
           Text(
-            'Welcome Back',
-            style: theme.textTheme.headlineLarge,
-          ),
-
-          const SizedBox(height: 8),
-
-          Text(
-            'Continue building champions.',
-            style: theme.textTheme.bodyLarge?.copyWith(
-              color: Colors.white70,
+            'Welcome back.',
+            style: theme.textTheme.displaySmall?.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.8,
+              height: 1.05,
             ),
           ),
 
-          const SizedBox(height: 40),
+          const SizedBox(height: 10),
 
+          Text(
+            'Continue building champions.',
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: Colors.white70,
+              height: 1.5,
+            ),
+          ),
+
+          const SizedBox(height: 48),
+
+          // Email
           CCTextField(
-            label: 'Email',
+            label: 'EMAIL',
             controller: _emailController,
             hintText: 'coach@academy.com',
             prefixIcon: Icons.email_outlined,
@@ -86,15 +91,15 @@ class _LoginFormState extends State<LoginForm> {
               if (value == null || value.trim().isEmpty) {
                 return 'Email is required.';
               }
-
               return null;
             },
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 28),
 
+          // Password
           CCPasswordField(
-            label: 'Password',
+            label: 'PASSWORD',
             controller: _passwordController,
             hintText: 'Enter your password',
             textInputAction: TextInputAction.done,
@@ -102,21 +107,21 @@ class _LoginFormState extends State<LoginForm> {
               if (value == null || value.isEmpty) {
                 return 'Password is required.';
               }
-
               return null;
             },
             onFieldSubmitted: (_) => _login(),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 22),
 
           Row(
             children: [
               Checkbox(
                 value: _rememberMe,
+                activeColor: const Color(0xFFA65A4D),
                 onChanged: (value) {
                   setState(() {
-                    _rememberMe = value ?? true;
+                    _rememberMe = value ?? false;
                   });
                 },
               ),
@@ -125,27 +130,29 @@ class _LoginFormState extends State<LoginForm> {
                 'Remember Me',
                 style: TextStyle(
                   color: Colors.white70,
+                  fontSize: 16,
                 ),
               ),
 
               const Spacer(),
 
               TextButton(
-                onPressed: () {
-                  // TODO:
-                  // Forgot password
-                },
+                onPressed: () {},
                 child: const Text(
                   'Forgot Password?',
+                  style: TextStyle(
+                    color: Color(0xFFA65A4D),
+                  ),
                 ),
               ),
             ],
           ),
 
-          const SizedBox(height: 32),
+          const SizedBox(height: 36),
 
           SizedBox(
             width: double.infinity,
+            height: 58,
             child: CCButton(
               label: 'SIGN IN',
               loading: _loading,
@@ -153,16 +160,16 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
 
-          const SizedBox(height: 32),
+          const SizedBox(height: 34),
 
           Center(
             child: TextButton(
-              onPressed: () {
-                // TODO:
-                // Create Academy
-              },
+              onPressed: () {},
               child: const Text(
                 'Create a new academy',
+                style: TextStyle(
+                  color: Color(0xFFA65A4D),
+                ),
               ),
             ),
           ),
